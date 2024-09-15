@@ -3,7 +3,7 @@ import React from "react";
 function costCalc() {
   return (
     <div className="flex h-full w-full p-3 dark:bg-gray-900 shadow-lg overflow-y-scroll">
-      <div className="text-white z-10 h-full w-full px-8 mt-16">
+      <div className="text-white z-10 h-full w-full px-8 mt-20">
 
         {/* Add your code here */}
         <div id="project-title-description">

@@ -2,9 +2,9 @@
 import "./App.css";
 
 //import Component
-import Header from "./components/header";
-import CostCalc from "./components/costCalc";
-import Object3D from "./components/object3D";
+import Header from "./view/header";
+import CostCalc from "./view/costCalc";
+import Object3D from "./view/object3D";
 
 function App() {
   return (
