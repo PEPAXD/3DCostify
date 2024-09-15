@@ -28,7 +28,7 @@ function costCalc() {
           <hr className="border-t-1 border-white w-full" />
         </div>
 
-        <div className="py-6" id="filament&Printers">
+        <div id="filament&Printers" className="py-6" >
           {/*FilamentScrapp */}
           <div className="w-full">
             <h2>Filament Type</h2>
@@ -40,8 +40,6 @@ function costCalc() {
               <Dropdowns placeHolder={"Choose your filament type"}/>
             </form>
           </div>
-
-          <br />
 
           {/*PrinterScrapp */}
           <div class="w-full">
