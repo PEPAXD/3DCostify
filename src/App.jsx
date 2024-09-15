@@ -1,8 +1,10 @@
 //import Background Style
 import "./App.css";
 
-//import ReactComponent
+//import Component
 import Header from "./components/header";
+import CostCalc from "./components/costCalc";
+import Object3D from "./components/object3D";
 
 function App() {
   return (
@@ -10,12 +12,10 @@ function App() {
       <Header />
       <main className="bg-gray-900 h-screen">
         <div className="container max-w-full flex">
-          {/* //3D_Window */}
-          <h1>AAA</h1>
+          <Object3D />
 
-          {/* //Cost-Cal_Window */}
           <div className="w-3/5">
-            <h1>BBB</h1>
+            <CostCalc />
           </div>
         </div>
       </main>
