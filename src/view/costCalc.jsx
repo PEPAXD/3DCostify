@@ -37,7 +37,10 @@ function costCalc() {
             </cite>
 
             <form className="flex gap-3">
-              <Dropdowns placeHolder={"Choose your filament type"} />
+              <Dropdowns
+                placeHolder={"Choose your filament type"}
+                droptype={0}
+              />
             </form>
           </div>
 
@@ -49,7 +52,10 @@ function costCalc() {
             </cite>
 
             <form className="flex gap-3">
-              <Dropdowns placeHolder={"Choose your Printer model"} />
+              <Dropdowns
+                placeHolder={"Choose your Printer model"}
+                droptype={1}
+              />
             </form>
           </div>
         </div>

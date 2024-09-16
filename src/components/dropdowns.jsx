@@ -1,10 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Data from "../data/data.js";
 
-function dropdowns({ placeHolder }) {
-  useEffect(() => {
-    console.log(Data);
-  }, []);
+function dropdowns({ placeHolder, droptype }) {
+  const items = droptype === 0 ? Data.filamentos : Data.impresoras;
 
   return (
     <>
@@ -14,15 +12,20 @@ function dropdowns({ placeHolder }) {
             className="appearance-none block w-full bg-none bg-gray-700 border border-transparent py-2 pl-3 pr-10 text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm font-bold text-lg mb-2"
             defaultValue="default"
           >
-            <option disabled value="default">
+  <option disabled value="default" class="text-gray-700 pointer-events-none">
               {placeHolder}
             </option>
 
-            <optgroup label="GST3D">
-              <option>PLA+ $12000</option>
-              <option>A2</option>
-              <option>A3</option>
-            </optgroup>
+            {Object.keys(items).map((group, index) => (
+              <optgroup key={index} label={group}>
+                {items[group].map((option, idx) => (
+                  <option key={idx} value={option.type}>
+                    {option.type}
+                  </option>
+                ))}
+                <option disabled></option>
+              </optgroup>
+            ))}
           </select>
 
           <div className="pointer-events-none absolute inset-y-0 right-0 px-2 flex items-center">
