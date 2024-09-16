@@ -13,7 +13,7 @@ function costCalc() {
             className="font-display mb-2 text-2xl font-semibold dark:text-gray-200"
             itemProp="titleCalculator"
           >
-            Smart 3D Print Price Checker
+            Smart 3D PrintFDM Price Checker
           </h1>
 
           <hr className="border-t-1 border-white w-full" />
