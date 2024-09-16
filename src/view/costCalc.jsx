@@ -11,7 +11,7 @@ function costCalc() {
         <div id="costify-title-description">
           <h1
             className="font-display mb-2 text-2xl font-semibold dark:text-gray-200"
-            itemprop="titleCalculator"
+            itemProp="titleCalculator"
           >
             Smart 3D Print Price Checker
           </h1>
@@ -28,7 +28,7 @@ function costCalc() {
           <hr className="border-t-1 border-white w-full" />
         </div>
 
-        <div id="filament&Printers" className="py-6" >
+        <div id="filament&Printers" className="py-6">
           {/*FilamentScrapp */}
           <div className="w-full">
             <h2>Filament Type</h2>
@@ -37,12 +37,12 @@ function costCalc() {
             </cite>
 
             <form className="flex gap-3">
-              <Dropdowns placeHolder={"Choose your filament type"}/>
+              <Dropdowns placeHolder={"Choose your filament type"} />
             </form>
           </div>
 
           {/*PrinterScrapp */}
-          <div class="w-full">
+          <div className="w-full">
             <h5>3D Printer Model</h5>
             <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
               * Brand &amp; Model ($)

@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
+import Data from "../data/data.js";
 
 function dropdowns({ placeHolder }) {
+  useEffect(() => {
+    console.log(Data);
+  }, []);
+
   return (
     <>
       <fieldset className="w-full my-4">
         <div className="relative">
           <select
-            id="Filamento"
-            name="Filamento"
             className="appearance-none block w-full bg-none bg-gray-700 border border-transparent py-2 pl-3 pr-10 text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm font-bold text-lg mb-2"
+            defaultValue="default"
           >
-            <option disabled selected>
+            <option disabled value="default">
               {placeHolder}
             </option>
 
@@ -30,9 +34,9 @@ function dropdowns({ placeHolder }) {
               aria-hidden="true"
             >
               <path
-                fill-rule="evenodd"
+                fillRule="evenodd"
                 d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                clip-rule="evenodd"
+                clipRule="evenodd"
               />
             </svg>
           </div>
