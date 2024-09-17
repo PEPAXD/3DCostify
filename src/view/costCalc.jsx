@@ -29,8 +29,7 @@ function costCalc() {
           <hr className="border-t-1 border-white w-full" />
         </div>
 
-        <div id="filament&Printers" className="py-6">
-
+        <div id="filament&Printers" className="pt-4">
           {/*PrinterScrapp */}
           <div className="w-full">
             <h2>3D Printer Model</h2>
@@ -46,8 +45,8 @@ function costCalc() {
             </form>
           </div>
 
-                    {/*FilamentScrapp */}
-                    <div className="w-full">
+          {/*FilamentScrapp */}
+          <div className="w-full">
             <h2>Filament Type</h2>
             <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
               * Material &amp; Brand ($/Kg)
@@ -59,12 +58,34 @@ function costCalc() {
                 droptype={0}
               />
             </form>
-
-            <form className="flex gap-4">
-              <NumberInputBox boxTitle={"Weight in grams"} boxHolder={"1000g"} />
-              <NumberInputBox boxTitle={"Time in minutes"} boxHolder={"60 min"} />
-            </form>
           </div>
+        </div>
+
+        <div id="Weight&Time">
+          <form className="flex gap-4">
+            <NumberInputBox boxTitle={"Weight in grams"} boxHolder={"1000g"} />
+            <NumberInputBox boxTitle={"Time in minutes"} boxHolder={"60 min"} />
+          </form>
+        </div>
+
+        <div id="additionalsCosts" className="w-full mb-4">
+          <label htmlFor="postCost" className="block mb-2">
+          <h3>Additional Expenses - Post-Production</h3>
+
+          </label>
+          <input
+            type="text"
+            name="postCost"
+            id="postCost"
+            placeholder="E.g: [Additional services $10000]"
+            className="w-full py-2 pl-8 border border-gray-400 focus:outline-none focus:border-gray-100 bg-transparent"
+          />
+        </div>
+
+        <div className="w-full my-8 flex justify-end">
+          <button className="bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 w-full">
+            Confirm
+          </button>
         </div>
       </div>
     </div>
