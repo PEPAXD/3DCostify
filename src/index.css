@@ -24,3 +24,12 @@
   text-decoration: none;
 }
 
+.numBoxInputs[type="number"]::-webkit-outer-spin-button,
+.numBoxInputs[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.numBoxInputs[type="number"] {
+  -moz-appearance: textfield;
+}

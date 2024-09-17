@@ -2,6 +2,7 @@ import React from "react";
 
 //import components
 import Dropdowns from "../components/dropdowns";
+import NumberInputBox from "../components/numberInputBox";
 
 function costCalc() {
   return (
@@ -32,7 +33,7 @@ function costCalc() {
 
           {/*PrinterScrapp */}
           <div className="w-full">
-            <h5>3D Printer Model</h5>
+            <h2>3D Printer Model</h2>
             <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
               * Brand &amp; Model ($)
             </cite>
@@ -57,6 +58,11 @@ function costCalc() {
                 placeHolder={"Choose your filament type"}
                 droptype={0}
               />
+            </form>
+
+            <form className="flex gap-4">
+              <NumberInputBox boxTitle={"Weight in grams"} boxHolder={"1000g"} />
+              <NumberInputBox boxTitle={"Time in minutes"} boxHolder={"60 min"} />
             </form>
           </div>
         </div>
