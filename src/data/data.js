@@ -54,13 +54,105 @@ const data = {
   },
 
   impresoras: {
-    Prusa: [
+    Anycubic: [
       {
-        type: "i3 MK3S+",
-        price: 75000,
+        type: "Anycubic Kobra 2 Neo",
+        price: 449000,
+      },
+      {
+        type: "Anycubic Kobra 3 Combo",
+        price: 1232000,
       },
     ],
-    
+    Artillery: [
+      {
+        type: "Artillery Genius Pro",
+        price: 449000,
+      },
+      {
+        type: "Artillery Sidewinder X2",
+        price: 529000,
+      },
+      {
+        type: "Artillery Hornet",
+        price: 319865,
+      },
+      {
+        type: "Artillery Sidewinder X3 PLUS",
+        price: 577900,
+      },
+      {
+        type: "Artillery Sidewinder X4 PRO",
+        price: 616900,
+      },
+      {
+        type: "Artillery Sidewinder X3 PRO",
+        price: 514900,
+      },
+      {
+        type: "Artillery Sidewinder X4 PLUS",
+        price: 829900,
+      },
+    ],
+
+    Bambu: [
+      {
+        type: "Bambu Lab A1 Combo",
+        price: 1729000,
+      },
+      {
+        type: "Bambu Lab A1 Mini Combo",
+        price: 1149000,
+      },
+      {
+        type: "Bambu Lab P1S Combo",
+        price: 2929000,
+      },
+      {
+        type: "Bambu Lab A1",
+        price: 1249000,
+      },
+      {
+        type: "Bambu Lab X1 Carbon Combo",
+        price: 4459000,
+      },
+      {
+        type: "Bambu Lab A1 Mini",
+        price: 779000,
+      },
+      {
+        type: "Bambu Lab AMS – Sistema Automático de Materiales",
+        price: 999000,
+      },
+      {
+        type: "Bambu Lab AMS Lite – Sistema Automático de Materiales",
+        price: 499000,
+      },
+    ],
+
+    Biqu: [
+      {
+        type: "Biqu B1",
+        price: 299000,
+      },
+      {
+        type: "Biqu B1 SE Plus",
+        price: 486500,
+      },
+      {
+        type: "Biqu B2 Dual",
+        price: 534641,
+      },
+      {
+        type: "Biqu Hurakan",
+        price: 654350,
+      },
+      {
+        type: "Biqu BX",
+        price: 597550,
+      },
+    ],
+
     Creality: [
       {
         type: "Creality Ender-3 V2",
@@ -157,13 +249,77 @@ const data = {
       {
         type: "Creality CR-3040 Pro Industrial",
         price: 3190000,
-      }
+      },
     ],
 
-    Anycubic: [
+    Elegoo: [
       {
-        type: "Photon Mono X",
-        price: 45000,
+        type: "Elegoo Neptune 4 Pro",
+        price: 704900,
+      },
+      {
+        type: "Elegoo Neptune 4",
+        price: 635900,
+      },
+    ],
+
+    Flsun: [
+      {
+        type: "Flsun Q5 Delta",
+        price: 389000,
+      },
+      {
+        type: "Flsun T1",
+        price: 1190000,
+      },
+      {
+        type: "Flsun S1",
+        price: 2390000,
+      },
+      {
+        type: "Flsun QQ-S Pro",
+        price: 549000,
+      },
+      {
+        type: "Flsun V400 Delta",
+        price: 1199000,
+      },
+      {
+        type: "Flsun Super Racer (SR) Delta",
+        price: 689000,
+      },
+    ],
+
+    Hellbot: [
+      {
+        type: "Hellbot Hidra Plus",
+        price: 1615950,
+      },
+      {
+        type: "Hellbot Magna SE PRO",
+        price: 468891,
+      },
+      {
+        type: "Hellbot Hellbot Magna SE 300",
+        price: 503991,
+      },
+    ],
+
+    MakerPi: [
+      {
+        type: "MakerPi P3 PRO",
+        price: 664999,
+      },
+    ],
+
+    Prusa: [
+      {
+        type: "Original Prusa MK4",
+        price: 1970000,
+      },
+      {
+        type: "Original Prusa XL 5 Extrusores",
+        price: 8990000,
       },
     ],
   },

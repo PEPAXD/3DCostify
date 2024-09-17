@@ -29,20 +29,6 @@ function costCalc() {
         </div>
 
         <div id="filament&Printers" className="py-6">
-          {/*FilamentScrapp */}
-          <div className="w-full">
-            <h2>Filament Type</h2>
-            <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
-              * Material &amp; Brand ($/Kg)
-            </cite>
-
-            <form className="flex gap-3">
-              <Dropdowns
-                placeHolder={"Choose your filament type"}
-                droptype={0}
-              />
-            </form>
-          </div>
 
           {/*PrinterScrapp */}
           <div className="w-full">
@@ -55,6 +41,21 @@ function costCalc() {
               <Dropdowns
                 placeHolder={"Choose your Printer model"}
                 droptype={1}
+              />
+            </form>
+          </div>
+
+                    {/*FilamentScrapp */}
+                    <div className="w-full">
+            <h2>Filament Type</h2>
+            <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
+              * Material &amp; Brand ($/Kg)
+            </cite>
+
+            <form className="flex gap-3">
+              <Dropdowns
+                placeHolder={"Choose your filament type"}
+                droptype={0}
               />
             </form>
           </div>
