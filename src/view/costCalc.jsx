@@ -90,7 +90,7 @@ function costCalc() {
           </div>
           <div className="flex flex-col gap-2 items-center p-1">
             <button className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700">
-              Add New Expense inputbox
+            Add Additional ExpenseBox
             </button>
           </div>
         </div>
