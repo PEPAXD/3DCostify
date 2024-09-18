@@ -3,6 +3,7 @@ import React from "react";
 //import components
 import Dropdowns from "../components/dropdowns";
 import NumberInputBox from "../components/numberInputBox";
+import AddButton from "../components/addButton";
 
 function costCalc() {
   return (
@@ -68,18 +69,30 @@ function costCalc() {
           </form>
         </div>
 
-        <div id="additionalsCosts" className="w-full mb-4">
-          <label htmlFor="postCost" className="block mb-2">
-          <h3>Additional Expenses - Post-Production</h3>
+        <div id="additionalsCosts" className="w-full my-2">
+          <div className="flex w-full justify-between my-2">
+            <h3>Additional Expenses</h3>
 
-          </label>
-          <input
-            type="text"
-            name="postCost"
-            id="postCost"
-            placeholder="E.g: [Additional services $10000]"
-            className="w-full py-2 pl-8 border border-gray-400 focus:outline-none focus:border-gray-100 bg-transparent"
-          />
+            {/* transform this to component */}
+          </div>
+
+          <div className="relative w-full mb-2">
+            <input
+              type="text"
+              name="postCost"
+              id="postCost"
+              placeholder="E.g: [Additional services $10000]"
+              className="w-full py-2 pl-8 pr-10 border border-gray-400 focus:outline-none focus:border-gray-100 bg-transparent"
+            />
+            <div className="absolute inset-y-0 right-0 flex items-center p-2">
+              <AddButton />
+            </div>
+          </div>
+          <div className="flex flex-col gap-2 items-center p-1">
+            <button className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700">
+              Add New Expense inputbox
+            </button>
+          </div>
         </div>
 
         <div className="w-full my-8 flex justify-end">
