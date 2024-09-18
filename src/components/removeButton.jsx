@@ -1,10 +1,12 @@
 import React from "react";
 
-function addButton() {
+function removeButton({ onClick }) {
   return (
-    <>
-      <button className="flex-1 h-full flex items-center justify-center hover:bg-red-700">
-        <div className="relative">
+    <button
+      className="flex-1 h-full flex items-center justify-center hover:bg-red-700"
+      onClick={onClick}
+    >
+      <div className="relative">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 text-gray-500 hover:text-white"
@@ -19,10 +21,9 @@ function addButton() {
             d="M6 18L18 6M6 6l12 12"
           />
         </svg>
-        </div>
-      </button>
-    </>
+      </div>
+    </button>
   );
 }
 
-export default addButton;
+export default removeButton;
