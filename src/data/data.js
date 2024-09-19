@@ -1,5 +1,13 @@
 const data = {
   filamentos: {
+
+    Custom: [
+      {
+        type: "Please provide the cost for your filament",
+        price: 0,
+      },
+    ],
+
     GST3D: [
       {
         type: "PLA+",
@@ -54,6 +62,14 @@ const data = {
   },
 
   impresoras: {
+
+    Custom: [
+      {
+        type: "Please provide the cost for your printer",
+        price: 0,
+      },
+    ],
+
     Anycubic: [
       {
         type: "Anycubic Kobra 2 Neo",

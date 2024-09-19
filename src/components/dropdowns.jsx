@@ -1,8 +1,28 @@
 import React, { useEffect, useState } from "react";
 import Data from "../data/data.js";
 
+//import components
+import NumberInputBox from "./numberInputBox.jsx";
+
 function dropdowns({ placeHolder, droptype }) {
   const items = droptype === 0 ? Data.filamentos : Data.impresoras;
+
+  let [selectedValue, setSelectedValue] = useState("default");
+  let [price, setPrice] = useState(0);
+  let [customPrice, setCustomPrice] = useState(0);
+
+  const handleChange = (event) => {
+    let value = event.target.value;
+    let price = event.target.selectedOptions[0].getAttribute("data-price");
+
+    setSelectedValue(value);
+    setPrice(price);
+    console.log(value, price);
+  };
+
+  const handleCustomPriceChange = (event) => {
+    setCustomPrice(event.target.value);
+  };
 
   return (
     <>
@@ -10,16 +30,25 @@ function dropdowns({ placeHolder, droptype }) {
         <div className="relative">
           <select
             className="appearance-none block w-full bg-none bg-gray-700 border border-transparent py-2 pl-3 pr-10 text-white focus:outline-none focus:ring-white focus:border-white sm:text-sm font-bold text-lg mb-2"
-            defaultValue="default"
+            value={selectedValue}
+            onChange={handleChange}
           >
-  <option disabled value="default" class="text-gray-700 pointer-events-none">
+            <option
+              disabled
+              value="default"
+              className="text-gray-700 pointer-events-none"
+            >
               {placeHolder}
             </option>
 
             {Object.keys(items).map((group, index) => (
               <optgroup key={index} label={group}>
                 {items[group].map((option, idx) => (
-                  <option key={idx} value={option.type}>
+                  <option
+                    key={idx}
+                    value={option.type}
+                    data-price={option.price}
+                  >
                     {option.type}
                   </option>
                 ))}
@@ -44,6 +73,10 @@ function dropdowns({ placeHolder, droptype }) {
             </svg>
           </div>
         </div>
+
+        {selectedValue === "Please provide the cost for your filament" && (
+          <NumberInputBox boxTitle={""} boxHolder={customPrice} />
+        )}
       </fieldset>
     </>
   );
