@@ -16,6 +16,19 @@ function costCalc() {
     setInputBoxes(inputBoxes.filter((box) => box.id !== id));
   };
 
+  // calculate the total cost of the print
+  let [totalCost, setTotalCost] = useState(0);
+
+  function sumNumbers(a, b) {
+    return a + b;
+  }
+
+  function getPrintCost() {
+    const result = sumNumbers(5, 3); // Ejemplo de números a sumar
+    setTotalCost(result);
+    console.log("Resultado de la suma:", result);
+  }
+
   return (
     <div className="flex h-full w-full p-3 dark:bg-gray-900 shadow-lg overflow-y-scroll">
       <div className="text-white z-10 h-full w-full px-8 mt-20">
@@ -41,7 +54,6 @@ function costCalc() {
         </div>
 
         <div id="filament&Printers" className="pt-4">
-          
           {/*PrinterScrapp */}
           <div className="w-full">
             <h2>3D Printer Model</h2>
@@ -107,17 +119,21 @@ function costCalc() {
 
         <div
           id="addToDB_CostCalc"
-          className="w-full my-12 flex justify-end gap-3"
+          className="w-full my-12 py-4 flex justify-end gap-3"
         >
           <div className=" py-2 w-full border-b-2 border-gray-500 px-4">
             <span className="font-semibold w-full flex justify-between">
-              Total Cost: <span className=" text-gray-400 ">$ 0</span>
+              Total Cost: <span className=" text-gray-400 ">$ {totalCost}</span>
             </span>
           </div>
-          <button className="bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 w-1/3">
+          <button
+            className="bg-sky-700 hover:bg-sky-900 text-white font-bold py-2 w-1/3"
+            onClick={getPrintCost}
+          >
             Confirm
           </button>
         </div>
+
       </div>
     </div>
   );
