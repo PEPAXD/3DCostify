@@ -6,8 +6,9 @@ import NumberInputBox from "../components/numberInputBox";
 import TextInputBox from "../components/textInputBox";
 
 function costCalc() {
-  const [inputBoxes, setInputBoxes] = useState([{ id: 0 }]);
 
+  //* generate inputs boxes for additional expenses
+  const [inputBoxes, setInputBoxes] = useState([{ id: 0 }]);
   const addInputBox = () => {
     setInputBoxes([...inputBoxes, { id: inputBoxes.length }]);
   };
@@ -16,8 +17,12 @@ function costCalc() {
     setInputBoxes(inputBoxes.filter((box) => box.id !== id));
   };
 
-  // calculate the total cost of the print
+  //TODO: calculate the total cost of the print
   let [totalCost, setTotalCost] = useState(0);
+
+  const handleValuesChange = (values) => {
+    console.log("Valores recibidos del Dropdowns:", values);
+  };
 
   function sumNumbers(a, b) {
     return a + b;
@@ -28,6 +33,7 @@ function costCalc() {
     setTotalCost(result);
     console.log("Resultado de la suma:", result);
   }
+  //TODO: --------------------------------------------
 
   return (
     <div className="flex h-full w-full p-3 dark:bg-gray-900 shadow-lg overflow-y-scroll">
@@ -65,6 +71,7 @@ function costCalc() {
               <Dropdowns
                 placeHolder={"Choose your Printer model"}
                 droptype={1}
+                onValuesChange={handleValuesChange}
               />
             </form>
           </div>
@@ -80,6 +87,7 @@ function costCalc() {
               <Dropdowns
                 placeHolder={"Choose your filament type"}
                 droptype={0}
+                onValuesChange={handleValuesChange}
               />
             </form>
           </div>

@@ -1,8 +1,8 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import Data from "../data/data.js";
 import NumberInputBox from "./numberInputBox.jsx";
 
-function Dropdowns({ placeHolder, droptype }) {
+function Dropdowns({ placeHolder, droptype, onValuesChange }) {
   const items = useMemo(() => (droptype === 0 ? Data.filamentos : Data.impresoras), [droptype]);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -19,6 +19,11 @@ function Dropdowns({ placeHolder, droptype }) {
     setPrice(price);
     setSelectedIndex(index);
   };
+
+  useEffect(() => {
+    const values = { selectedIndex, selectedValue, price, customPrice };
+    onValuesChange(values);
+  }, [selectedIndex, selectedValue, price, customPrice, onValuesChange]);
 
   return (
     <fieldset className="w-full my-4">
