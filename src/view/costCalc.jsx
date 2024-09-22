@@ -20,6 +20,9 @@ function costCalc() {
 
   let printerCost = 0;
   let filamentCost = 0;
+  let weightGrams = 0;
+  let timeMinutes = 0;
+
   let [totalCost, setTotalCost] = useState(0);
 
   const handleValuesChange = (values, droptype) => {
@@ -27,8 +30,11 @@ function costCalc() {
       printerCost = values.price;
     } else if (droptype === 0) {
       filamentCost = values.price;
+    } else if (droptype === 2) {
+      weightGrams = values;
+    } else if (droptype === 3) {
+      timeMinutes = values;
     }
-
   };
 
   function sumNumbers(a, b) {
@@ -38,10 +44,15 @@ function costCalc() {
   function getPrintCost() {
     const result = sumNumbers(5, 3); // Ejemplo de números a sumar
     setTotalCost(result);
-    
+
+    console.clear(); // Limpia la consola
+
     console.log("Costo de la impresora:", printerCost);
     console.log("Costo del filamento:", filamentCost);
-    console.log("Resultado de la suma:", result);
+    console.log("Peso en gramos:", weightGrams);
+    console.log("Tiempo en minutos:", timeMinutes);
+
+    //    console.log("Resultado de la suma:", result);
   }
   //TODO: --------------------------------------------
 
@@ -109,10 +120,12 @@ function costCalc() {
               <NumberInputBox
                 boxTitle={"Weight in grams"}
                 boxHolder={"1000g"}
+                onValueChange={(value) => handleValuesChange(value, 2)}
               />
               <NumberInputBox
                 boxTitle={"Time in minutes"}
                 boxHolder={"60 min"}
+                onValueChange={(value) => handleValuesChange(value, 3)}
               />
             </div>
           </div>
