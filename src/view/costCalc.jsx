@@ -29,8 +29,6 @@ function costCalc() {
       filamentCost = values.price;
     }
 
-    console.log("Costo de la impresora:", printerCost);
-    console.log("Costo del filamento:", filamentCost);
   };
 
   function sumNumbers(a, b) {
@@ -40,6 +38,9 @@ function costCalc() {
   function getPrintCost() {
     const result = sumNumbers(5, 3); // Ejemplo de números a sumar
     setTotalCost(result);
+    
+    console.log("Costo de la impresora:", printerCost);
+    console.log("Costo del filamento:", filamentCost);
     console.log("Resultado de la suma:", result);
   }
   //TODO: --------------------------------------------
@@ -104,7 +105,7 @@ function costCalc() {
           </div>
 
           <div id="Weight&Time">
-            <form className="flex gap-4">
+            <div className="flex gap-4">
               <NumberInputBox
                 boxTitle={"Weight in grams"}
                 boxHolder={"1000g"}
@@ -113,7 +114,7 @@ function costCalc() {
                 boxTitle={"Time in minutes"}
                 boxHolder={"60 min"}
               />
-            </form>
+            </div>
           </div>
 
           <div id="additionalsCosts" className="w-full my-2">
