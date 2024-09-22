@@ -6,7 +6,6 @@ import NumberInputBox from "../components/numberInputBox";
 import TextInputBox from "../components/textInputBox";
 
 function costCalc() {
-
   //* generate inputs boxes for additional expenses
   const [inputBoxes, setInputBoxes] = useState([{ id: 0 }]);
   const addInputBox = () => {
@@ -18,10 +17,20 @@ function costCalc() {
   };
 
   //TODO: calculate the total cost of the print
+
+  let printerCost = 0;
+  let filamentCost = 0;
   let [totalCost, setTotalCost] = useState(0);
 
-  const handleValuesChange = (values) => {
-    console.log("Valores recibidos del Dropdowns:", values);
+  const handleValuesChange = (values, droptype) => {
+    if (droptype === 1) {
+      printerCost = values.price;
+    } else if (droptype === 0) {
+      filamentCost = values.price;
+    }
+
+    console.log("Costo de la impresora:", printerCost);
+    console.log("Costo del filamento:", filamentCost);
   };
 
   function sumNumbers(a, b) {
@@ -59,71 +68,79 @@ function costCalc() {
           <hr className="border-t-1 border-white w-full" />
         </div>
 
-        <div id="filament&Printers" className="pt-4">
-          {/*PrinterScrapp */}
-          <div className="w-full">
-            <h2>3D Printer Model</h2>
-            <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
-              * Brand &amp; Model ($)
-            </cite>
+        <form>
+          <div id="filament&Printers" className="pt-4">
+            {/*PrinterScrapp */}
+            <div className="w-full">
+              <h2>3D Printer Model</h2>
+              <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
+                * Brand &amp; Model ($)
+              </cite>
 
-            <form className="flex gap-3">
-              <Dropdowns
-                placeHolder={"Choose your Printer model"}
-                droptype={1}
-                onValuesChange={handleValuesChange}
-              />
-            </form>
-          </div>
+              <div className="flex gap-3">
+                <Dropdowns
+                  placeHolder={"Choose your Printer model"}
+                  droptype={1}
+                  onValuesChange={(values) => handleValuesChange(values, 1)}
+                />
+              </div>
+            </div>
 
-          {/*FilamentScrapp */}
-          <div className="w-full">
-            <h2>Filament Type</h2>
-            <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
-              * Material &amp; Brand ($/Kg)
-            </cite>
+            {/*FilamentScrapp */}
+            <div className="w-full">
+              <h2>Filament Type</h2>
+              <cite className="pl-4 text-sm font-semibold text-gray-400 tracking-wider ">
+                * Material &amp; Brand ($/Kg)
+              </cite>
 
-            <form className="flex gap-3">
-              <Dropdowns
-                placeHolder={"Choose your filament type"}
-                droptype={0}
-                onValuesChange={handleValuesChange}
-              />
-            </form>
-          </div>
-        </div>
-
-        <div id="Weight&Time">
-          <form className="flex gap-4">
-            <NumberInputBox boxTitle={"Weight in grams"} boxHolder={"1000g"} />
-            <NumberInputBox boxTitle={"Time in minutes"} boxHolder={"60 min"} />
-          </form>
-        </div>
-
-        <div id="additionalsCosts" className="w-full my-2">
-          <h3 className="flex w-full justify-between my-2">
-            Additional Expenses
-          </h3>
-
-          <div>
-            {inputBoxes.map((box) => (
-              <TextInputBox
-                key={box.id}
-                id={box.id}
-                removeBox={removeInputBox}
-              />
-            ))}
-
-            <div className="flex flex-col gap-2 items-center p-1">
-              <button
-                className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
-                onClick={addInputBox}
-              >
-                Add Additional ExpenseBox
-              </button>
+              <div className="flex gap-3">
+                <Dropdowns
+                  placeHolder={"Choose your filament type"}
+                  droptype={0}
+                  onValuesChange={(values) => handleValuesChange(values, 0)}
+                />
+              </div>
             </div>
           </div>
-        </div>
+
+          <div id="Weight&Time">
+            <form className="flex gap-4">
+              <NumberInputBox
+                boxTitle={"Weight in grams"}
+                boxHolder={"1000g"}
+              />
+              <NumberInputBox
+                boxTitle={"Time in minutes"}
+                boxHolder={"60 min"}
+              />
+            </form>
+          </div>
+
+          <div id="additionalsCosts" className="w-full my-2">
+            <h3 className="flex w-full justify-between my-2">
+              Additional Expenses
+            </h3>
+
+            <div>
+              {inputBoxes.map((box) => (
+                <TextInputBox
+                  key={box.id}
+                  id={box.id}
+                  removeBox={removeInputBox}
+                />
+              ))}
+
+              <div className="flex flex-col gap-2 items-center p-1">
+                <button
+                  className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
+                  onClick={addInputBox}
+                >
+                  Add Additional ExpenseBox
+                </button>
+              </div>
+            </div>
+          </div>
+        </form>
 
         <div
           id="addToDB_CostCalc"
@@ -141,7 +158,6 @@ function costCalc() {
             Confirm
           </button>
         </div>
-
       </div>
     </div>
   );
