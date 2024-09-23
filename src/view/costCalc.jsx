@@ -7,23 +7,25 @@ import TextInputBox from "../components/textInputBox";
 
 function costCalc() {
   //* generate inputs boxes for additional expenses
-  const [inputBoxes, setInputBoxes] = useState([{ id: 0 }]);
-  const addInputBox = () => {
-    setInputBoxes([...inputBoxes, { id: inputBoxes.length }]);
-  };
+  const [expenseBoxesTitle, setExpenseBoxesTitle] = useState("");
 
-  const removeInputBox = (id) => {
-    setInputBoxes(inputBoxes.filter((box) => box.id !== id));
+  const newExpenseBox = (event) => {
+    event.preventDefault();
+    const description = prompt("Ingrese una descripcion del gasto:");
+    if (description !== null) {
+      const cost = prompt("Ingrese el costo del gasto en numeros:");
+      if (cost !== null) {
+        setExpenseBoxesTitle(`${description} - $${cost}`);
+      }
+    }
   };
-
+  
   //TODO: calculate the total cost of the print
 
   let printerCost = 0;
   let filamentCost = 0;
   let weightGrams = 0;
   let timeMinutes = 0;
-
-  let [totalCost, setTotalCost] = useState(0);
 
   const handleValuesChange = (values, droptype) => {
     if (droptype === 1) {
@@ -37,14 +39,8 @@ function costCalc() {
     }
   };
 
-  function sumNumbers(a, b) {
-    return a + b;
-  }
-
+  //? Check if the values are being stored correctly
   function getPrintCost() {
-    const result = sumNumbers(5, 3); // Ejemplo de números a sumar
-    setTotalCost(result);
-
     console.clear(); // Limpia la consola
 
     console.log("Costo de la impresora:", printerCost);
@@ -131,27 +127,15 @@ function costCalc() {
           </div>
 
           <div id="additionalsCosts" className="w-full my-2">
-            <h3 className="flex w-full justify-between my-2">
-              Additional Expenses
-            </h3>
+            <div className="flex flex-col gap-2 items-center p-1">
+            {expenseBoxesTitle && <p className="w-full">* {expenseBoxesTitle}</p>}
 
-            <div>
-              {inputBoxes.map((box) => (
-                <TextInputBox
-                  key={box.id}
-                  id={box.id}
-                  removeBox={removeInputBox}
-                />
-              ))}
-
-              <div className="flex flex-col gap-2 items-center p-1">
-                <button
-                  className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
-                  onClick={addInputBox}
-                >
-                  Add Additional ExpenseBox
-                </button>
-              </div>
+              <button
+                className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
+                onClick={newExpenseBox}
+              >
+                Add Additional ExpenseBox
+              </button>
             </div>
           </div>
         </form>
@@ -162,7 +146,7 @@ function costCalc() {
         >
           <div className=" py-2 w-full border-b-2 border-gray-500 px-4">
             <span className="font-semibold w-full flex justify-between">
-              Total Cost: <span className=" text-gray-400 ">$ {totalCost}</span>
+              Total Cost: <span className=" text-gray-400 ">$ 0</span>
             </span>
           </div>
           <button
