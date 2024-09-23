@@ -40,11 +40,11 @@ function aditionalExpensiveTable({ title, cost }) {
             </td>
             <th
               scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              class="px-2 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
               {title}
             </th>
-            <td class="px-6 py-4">${cost}</td>
+            <td class="px-2 py-4 w-1/4 text-center">${cost}</td>
           </tr>
         </tbody>
       </table>

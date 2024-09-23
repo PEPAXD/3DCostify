@@ -13,22 +13,47 @@ function costCalc() {
   const newExpenseBox = (event) => {
     event.preventDefault();
 
-    let title = prompt("Ingrese una descripcion del gasto:");
-    while (!title) {
-      alert(
-        "La descripción no puede estar vacía. Por favor, ingrese una descripción válida."
+    let title = prompt(
+      "Ingrese una descripcion del gasto (máximo 15 caracteres):"
+    );
+    while (!title || title.length > 40) {
+      if (!title) {
+        alert(
+          "La descripción no puede estar vacía. Por favor, ingrese una descripción válida."
+        );
+      } else if (title.length > 40) {
+        alert(
+          "La descripción no puede tener más de 40 caracteres. Por favor, ingrese una descripción válida."
+        );
+      }
+      title = prompt(
+        "Ingrese una descripcion del gasto (máximo 40 caracteres):"
       );
-      title = prompt("Ingrese una descripcion del gasto:");
     }
 
-    let cost = prompt("Ingrese el costo del gasto:");
-    while (!cost || isNaN(cost) || Number(cost) <= 0) {
-      alert(
-        "El costo debe ser un número positivo. Por favor, ingrese un costo válido."
-      );
-      cost = prompt("Ingrese el costo del gasto:");
+    let cost = prompt("Ingrese el costo del gasto (máximo 7 dígitos):");
+    while (!cost || isNaN(cost) || Number(cost) <= 0 || cost.length > 7) {
+      if (!cost || isNaN(cost) || Number(cost) <= 0) {
+        alert(
+          "El costo debe ser un número positivo. Por favor, ingrese un costo válido."
+        );
+      } else if (cost.length > 7) {
+        alert(
+          "El costo no puede tener más de 7 dígitos. Por favor, ingrese un costo válido."
+        );
+      }
+      cost = prompt("Ingrese el costo del gasto (máximo 7 dígitos):");
     }
-    setAdditionalExpenses([...additionalExpenses, { title, cost }]);
+
+    function formatCost(cost) {
+      return cost.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    }
+
+    const formattedCost = formatCost(cost);
+    setAdditionalExpenses([
+      ...additionalExpenses,
+      { title, cost: formattedCost },
+    ]);
   };
 
   //TODO: calculate the total cost of the print
@@ -139,7 +164,6 @@ function costCalc() {
 
           <div id="additionalsCosts" className="w-full">
             <div className="flex flex-col gap-2 items-center p-1">
-
               {additionalExpenses.map((expense, index) => (
                 <AditionalExpensiveTable
                   key={index}
@@ -160,7 +184,7 @@ function costCalc() {
 
         <div
           id="addToDB_CostCalc"
-          className="w-full my-12 py-4 flex justify-end gap-3"
+          className="w-full my-8 py-4 flex justify-end gap-3"
         >
           <div className=" py-2 w-full border-b-2 border-gray-500 px-4">
             <span className="font-semibold w-full flex justify-between">
