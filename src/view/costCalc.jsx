@@ -7,17 +7,18 @@ import AditionalExpensiveTable from "../components/aditionalExpensiveTable";
 
 function costCalc() {
   //* generate inputs boxes for additional expenses
-  const [expenseBoxesTitle, setExpenseBoxesTitle] = useState("");
+
+  const [additionalExpenses, setAdditionalExpenses] = useState([]);
 
   const newExpenseBox = (event) => {
     event.preventDefault();
 
-    let description = prompt("Ingrese una descripcion del gasto:");
-    while (!description) {
+    let title = prompt("Ingrese una descripcion del gasto:");
+    while (!title) {
       alert(
         "La descripción no puede estar vacía. Por favor, ingrese una descripción válida."
       );
-      description = prompt("Ingrese una descripcion del gasto:");
+      title = prompt("Ingrese una descripcion del gasto:");
     }
 
     let cost = prompt("Ingrese el costo del gasto:");
@@ -27,8 +28,7 @@ function costCalc() {
       );
       cost = prompt("Ingrese el costo del gasto:");
     }
-
-    setExpenseBoxesTitle(`${description} - $${cost}`);
+    setAdditionalExpenses([...additionalExpenses, { title, cost }]);
   };
 
   //TODO: calculate the total cost of the print
@@ -137,15 +137,19 @@ function costCalc() {
             </div>
           </div>
 
-          <div id="additionalsCosts" className="w-full my-2">
+          <div id="additionalsCosts" className="w-full">
             <div className="flex flex-col gap-2 items-center p-1">
-              {expenseBoxesTitle && (
-                <p className="w-full">* {expenseBoxesTitle}</p>
-              )}
-              <AditionalExpensiveTable />
+
+              {additionalExpenses.map((expense, index) => (
+                <AditionalExpensiveTable
+                  key={index}
+                  title={expense.title}
+                  cost={expense.cost}
+                />
+              ))}
 
               <button
-                className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
+                className="w-full p-1 my-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"
                 onClick={newExpenseBox}
               >
                 Add Additional ExpenseBox

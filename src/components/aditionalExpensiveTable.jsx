@@ -1,6 +1,6 @@
 import React from "react";
 
-function aditionalExpensiveTable() {
+function aditionalExpensiveTable({ title, cost }) {
   const handleDelete = (event) => {
     const row = event.target.closest("tr");
     if (row) {
@@ -42,9 +42,9 @@ function aditionalExpensiveTable() {
               scope="row"
               class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
             >
-              Pintura RED#325345
+              {title}
             </th>
-            <td class="px-6 py-4">$2999</td>
+            <td class="px-6 py-4">${cost}</td>
           </tr>
         </tbody>
       </table>
