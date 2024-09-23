@@ -3,7 +3,7 @@ import React, { useState } from "react";
 //import components
 import Dropdowns from "../components/dropdowns";
 import NumberInputBox from "../components/numberInputBox";
-import TextInputBox from "../components/textInputBox";
+import AditionalExpensiveTable from "../components/aditionalExpensiveTable";
 
 function costCalc() {
   //* generate inputs boxes for additional expenses
@@ -11,15 +11,26 @@ function costCalc() {
 
   const newExpenseBox = (event) => {
     event.preventDefault();
-    const description = prompt("Ingrese una descripcion del gasto:");
-    if (description !== null) {
-      const cost = prompt("Ingrese el costo del gasto en numeros:");
-      if (cost !== null) {
-        setExpenseBoxesTitle(`${description} - $${cost}`);
-      }
+
+    let description = prompt("Ingrese una descripcion del gasto:");
+    while (!description) {
+      alert(
+        "La descripción no puede estar vacía. Por favor, ingrese una descripción válida."
+      );
+      description = prompt("Ingrese una descripcion del gasto:");
     }
+
+    let cost = prompt("Ingrese el costo del gasto:");
+    while (!cost || isNaN(cost) || Number(cost) <= 0) {
+      alert(
+        "El costo debe ser un número positivo. Por favor, ingrese un costo válido."
+      );
+      cost = prompt("Ingrese el costo del gasto:");
+    }
+
+    setExpenseBoxesTitle(`${description} - $${cost}`);
   };
-  
+
   //TODO: calculate the total cost of the print
 
   let printerCost = 0;
@@ -128,7 +139,10 @@ function costCalc() {
 
           <div id="additionalsCosts" className="w-full my-2">
             <div className="flex flex-col gap-2 items-center p-1">
-            {expenseBoxesTitle && <p className="w-full">* {expenseBoxesTitle}</p>}
+              {expenseBoxesTitle && (
+                <p className="w-full">* {expenseBoxesTitle}</p>
+              )}
+              <AditionalExpensiveTable />
 
               <button
                 className="w-full p-1 text-sm font-semibold text-gray-400 tracking-wider hover:bg-gray-200 hover:text-gray-700"

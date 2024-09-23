@@ -2,11 +2,8 @@ import React from "react";
 
 function removeButton({ onClick }) {
   return (
-    <button
-      className="flex-1 h-full flex items-center justify-center hover:bg-red-700"
-      onClick={onClick}
-    >
-      <div className="relative">
+    <button className="hover:bg-red-700" onClick={onClick}>
+      <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6 text-gray-500 hover:text-white"
